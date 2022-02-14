@@ -18,3 +18,19 @@ Skill(id, name)
 **Технологии:**
  
  Java, MySQL, JDBC, Maven, Liquibase, JUnit, Mockito
+
+ **Инструкция по запуску**
+ 
+1.Скачать приложение
+
+2.Перейти в репозиторий по ссылке https://github.com/554455/JDBCApplication
+
+3.Кликнуть зеленую кнопку "Clone or Download" в правой верхней части страницы.
+
+4.Распаковать архиватором
+
+5.Открыть проект в intellij idea
+ 
+6.Запустить файлы Liquibase (src/main/resources/db/changelog/changeset/*)
+
+7.Запустить класс main.java.com.umaraliev.crud.Main
