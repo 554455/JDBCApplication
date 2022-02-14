@@ -6,10 +6,11 @@ Developer(id, firstName, lastName, List<Skill> skills)
 Skill(id, name)
 TeamStatus (enum ACTIVE, DELETED)
   
-#Требования:
+**Требования:**
 Придерживаться шаблона MVC (пакеты model, repository, service, controller, view)
 Для миграции БД использовать https://www.liquibase.org/
 Сервисный слой приложения должен быть покрыт юнит тестами (junit + mockito).
 Для импорта библиотек использовать Maven
 
-#Технологии: Java, MySQL, JDBC, Maven, Liquibase, JUnit, Mockito
+**Технологии:**
+ Java, MySQL, JDBC, Maven, Liquibase, JUnit, Mockito
