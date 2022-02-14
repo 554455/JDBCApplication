@@ -1,0 +1,7 @@
+databaseChangelog:
+  - include:
+      file: db/changelog/changeset/create-skill-table.yaml
+  - include:
+      file: db/changelog/changeset/create-developer-table.yml
+  - include:
+      file: db/changelog/changeset/create-team-table.yml

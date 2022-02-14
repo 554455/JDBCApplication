@@ -1,0 +1,25 @@
+databaseChangelog:
+  - changeSet:
+    id: create-developer-table
+    author: Umaraliev
+    changes:
+      - createTable:
+        tableName: developer
+          columns:
+            - column:
+                name: skill_id
+                type: int
+            - column:
+                name: firstName
+                type: varchar(255)
+            - column:
+                name: lastName
+                type: varchar(255)
+            - column:
+                name: developerId
+                type: int
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+

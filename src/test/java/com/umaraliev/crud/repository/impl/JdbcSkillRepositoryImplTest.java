@@ -1,8 +1,7 @@
-package com.umaraliev.crud.repository.Impl;
+package com.umaraliev.crud.repository.impl;
 
-import com.umaraliev.crud.connection.JDBCConnection;
+import com.umaraliev.crud.utils.JDBCUtils;
 import com.umaraliev.crud.model.Skill;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,9 +13,9 @@ import java.sql.Statement;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
-public class SkillRepositoryImplTest {
+public class JdbcSkillRepositoryImplTest {
 
-    private JDBCConnection connection;
+    private JDBCUtils connection;
     private Statement statement;
     private ResultSet resultSet;
     private PreparedStatement preparedStatement;
@@ -24,7 +23,7 @@ public class SkillRepositoryImplTest {
 
     @Before
     public void setUp() throws Exception {
-      connection = new JDBCConnection();
+      connection = new JDBCUtils();
       statement = connection.getConnectJDBC().createStatement();
       skill = new Skill();
     }

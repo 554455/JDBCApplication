@@ -1,6 +1,6 @@
 package com.umaraliev.crud.view;
 
-import com.umaraliev.crud.controllers.SkillController;
+import com.umaraliev.crud.controller.SkillController;
 import com.umaraliev.crud.model.Skill;
 
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ public class SkillView {
     private final SkillController controller = new SkillController();
     private final Scanner scanner = new Scanner(System.in);
 
-    public void createSkill() throws SQLException {
+    public void createSkill() {
         System.out.println("Enter name skill");
         String name = scanner.nextLine();
         Skill s = controller.createSkill(name);
@@ -26,7 +26,7 @@ public class SkillView {
         System.out.println("You have entered: " + s);
     }
 
-    public void getAll() throws SQLException, ClassNotFoundException {
+    public void getAll()  {
         List<Skill> s = controller.getAll();
     }
 
@@ -37,7 +37,7 @@ public class SkillView {
         System.out.println(s.toString());
     }
 
-    public void deleteByIdSkill() throws SQLException {
+    public void deleteByIdSkill() {
         System.out.println("Enter id skill");
         Integer id = scanner.nextInt();
         System.out.println("Deleted user with id: "

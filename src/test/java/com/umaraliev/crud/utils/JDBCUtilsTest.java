@@ -1,4 +1,4 @@
-package com.umaraliev.crud.connection;
+package com.umaraliev.crud.utils;
 
 import org.junit.Test;
 
@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
-public class JDBCConnectionTest{
+public class JDBCUtilsTest {
 
     @Test
     public void testGetConnectJDBC() {
-        JDBCConnection connection = new JDBCConnection();
+        JDBCUtils connection = new JDBCUtils();
 
         try {
             assertEquals(false, connection.getConnectJDBC().isClosed());

@@ -1,16 +1,24 @@
-package com.umaraliev.crud.controllers;
+package com.umaraliev.crud.controller;
 
 import com.umaraliev.crud.model.Skill;
-import com.umaraliev.crud.repository.Impl.SkillRepositoryImpl;
+import com.umaraliev.crud.repository.impl.JdbcSkillRepositoryImpl;
 import com.umaraliev.crud.repository.SkillRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class SkillController {
-    private final SkillRepository repo = new SkillRepositoryImpl();
+    private final SkillRepository repo;
 
-    public Skill createSkill(String name) throws SQLException {
+    public SkillController() {
+        repo = new JdbcSkillRepositoryImpl();
+    }
+
+    public SkillController(SkillRepository repo) {
+        this.repo = repo;
+    }
+
+    public Skill createSkill(String name) {
         Skill skill = new Skill();
         skill.setName(name);
         return repo.save(skill);
@@ -23,15 +31,15 @@ public class SkillController {
         return repo.update(skill);
     }
 
-    public List<Skill> getAll() throws SQLException, ClassNotFoundException {
+    public List<Skill> getAll() {
         return repo.getAll();
     }
 
-    public void deleteByIdSkill(Integer id) throws SQLException {
+    public void deleteByIdSkill(Integer id) {
         repo.deleteById(id);
     }
 
-    public Skill getById(Integer id) throws SQLException {
+    public Skill getById(Integer id) {
         return repo.getById(id);
     }
 }

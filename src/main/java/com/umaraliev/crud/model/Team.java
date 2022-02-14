@@ -1,10 +1,14 @@
 package com.umaraliev.crud.model;
 
-public class Skill {
+import java.util.List;
+
+public class Team {
 
     private Integer id;
 
     private String name;
+
+    private List<Developer> developerList;
 
     public Integer getId() {
         return id;
@@ -22,11 +26,11 @@ public class Skill {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Skill{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public List<Developer> getDeveloperList() {
+        return developerList;
+    }
+
+    public void setDeveloperList(List<Developer> developerList) {
+        this.developerList = developerList;
     }
 }

@@ -1,0 +1,22 @@
+databaseChangelog:
+  - changeSet:
+    id: create-skill-table
+    author: Umaraliev
+    changes:
+      - createTable:
+        tableName: skill
+        columns:
+          - column:
+            name: developer_id
+            type: int
+          - column:
+            name: skill_name
+            type: varchar(255)
+          - column:
+            name: skill_id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+

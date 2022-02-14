@@ -1,0 +1,22 @@
+databaseChangelog:
+  - changeSet:
+    id: create-team-table
+    author: Umaraliev
+    changes:
+      - createTable:
+        tableName: team
+        columns:
+          - column:
+            name: developer_id
+            type: int
+          - column:
+            name: name
+            type: varchar(255)
+          - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+
