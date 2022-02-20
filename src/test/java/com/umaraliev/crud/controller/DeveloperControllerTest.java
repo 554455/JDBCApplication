@@ -81,6 +81,12 @@ public class DeveloperControllerTest {
     @Test
     public void update() {
 
+        developer = new Developer();
+        developer.setId(2);
+        developer.setFirstName("Andrei");
+        developer.setLastName("Komarov");
+
+        when(jdbcDeveloperRepository.update(developer)).thenReturn(developer);
     }
 
     @Test
