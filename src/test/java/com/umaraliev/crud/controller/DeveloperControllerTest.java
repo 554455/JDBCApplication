@@ -1,14 +1,13 @@
 package com.umaraliev.crud.controller;
 
 import com.umaraliev.crud.model.Developer;
-import com.umaraliev.crud.model.Skill;
+import com.umaraliev.crud.repository.DeveloperRepository;
 import com.umaraliev.crud.repository.impl.JDBCDeveloperRepositoryImpl;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -17,25 +16,21 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeveloperControllerTest {
 
     @Mock
-    private JDBCDeveloperRepositoryImpl jdbcDeveloperRepository;
+    private DeveloperRepository developerRepository = mock(JDBCDeveloperRepositoryImpl.class);
+    @InjectMocks
+    private DeveloperController developerController = new DeveloperController(developerRepository);
     private Developer developerOne;
     private Developer developer;
 
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-    }
-
-    @Before
-    public void setUp(){
-        jdbcDeveloperRepository = mock(JDBCDeveloperRepositoryImpl.class);
     }
 
     @Test
@@ -46,13 +41,10 @@ public class DeveloperControllerTest {
         developer.setFirstName("Andrei");
         developer.setLastName("Komarov");
 
-        when(jdbcDeveloperRepository.save(developer)).thenReturn(developer);
-
-        Developer developerMock = jdbcDeveloperRepository.save(developer);
-
-        assertNotNull(developerMock);
-
-        assertEquals("Andrei", developerMock.getFirstName());
+        when(developerRepository.save(any(Developer.class))).thenReturn(developer);
+        Developer createdDeveloper = developerController.create("Andrei", "Komarov");
+        assertNotNull(createdDeveloper);
+        assertEquals("Andrei", createdDeveloper.getFirstName());
     }
 
     @Test
@@ -74,7 +66,8 @@ public class DeveloperControllerTest {
         developerList.add(developer);
 
 
-        when(jdbcDeveloperRepository.getAll()).thenReturn(developerList);
+        when(developerRepository.getAll()).thenReturn(developerList);
+        assertNotNull(developerList);
 
     }
 
@@ -86,15 +79,16 @@ public class DeveloperControllerTest {
         developer.setFirstName("Andrei");
         developer.setLastName("Komarov");
 
-        when(jdbcDeveloperRepository.update(developer)).thenReturn(developer);
+        when(developerRepository.update(developer)).thenReturn(developer);
+        assertEquals("Andrei", developer.getFirstName());
     }
 
     @Test
     public void delete() {
 
-        jdbcDeveloperRepository.deleteById(anyInt());
+        developerRepository.deleteById(anyInt());
 
-        verify(jdbcDeveloperRepository).deleteById(anyInt());
+        verify(developerRepository).deleteById(anyInt());
     }
 
     @Test
@@ -104,8 +98,7 @@ public class DeveloperControllerTest {
         developerList.add(developerOne);
         developerList.add(developer);
 
-        when(jdbcDeveloperRepository.getAll()).thenReturn(developerList);
-
-        when(jdbcDeveloperRepository.getById(1)).thenReturn(developerOne);
+        when(developerRepository.getAll()).thenReturn(developerList);
+        when(developerRepository.getById(1)).thenReturn(developerOne);
     }
 }
