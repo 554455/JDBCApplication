@@ -9,10 +9,10 @@ Skill(id, name)
    
 **Требования:**
  
-Придерживаться шаблона MVC (пакеты model, repository, service, controller, view)
-Для миграции БД использовать https://www.liquibase.org/
-Сервисный слой приложения должен быть покрыт юнит тестами (junit + mockito).
-Для импорта библиотек использовать Maven
+ - Придерживаться шаблона MVC (пакеты model, repository, service, controller, view)
+ - Для миграции БД использовать https://www.liquibase.org/
+ - Сервисный слой приложения должен быть покрыт юнит тестами (junit + mockito).
+ - Для импорта библиотек использовать Maven
 
  
 **Технологии:**
